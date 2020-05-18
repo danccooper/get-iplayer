@@ -17,8 +17,8 @@ jobs:
     - name: Login DockerHub
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
     - name: Build the Docker image
-      run: docker build . --tag danccooper/get-iplayer:$(date +%s)
+      run: docker build . --tag danccooper/get-iplayer:latest
     - name: Tag as latest
-      run: docker tag danccooper/get-iplayer:$(date +%s) danccooper/get-iplayer:latest
+      run: docker tag danccooper/get-iplayer:latest danccooper/get-iplayer:$(date +%s)
     - name: Push images
       run: docker push danccooper/get-iplayer:$(date +%s) && docker push danccooper/get-iplayer:latest
